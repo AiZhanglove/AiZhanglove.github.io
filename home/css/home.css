@@ -1,0 +1,303 @@
+html{
+	height: 100%;
+}
+body{
+	overflow-y: hidden;
+	margin: 0;
+	height: 100%;
+	background-image: url(../img/bg.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: #222;
+	min-width: 1300px;
+	min-height: 650px;
+	position: relative;
+}
+/*头部*/
+.logo{
+	float:left;
+	padding-top: 20px;
+	margin-left: 40px;
+	opacity: .6;
+}
+.nav{
+	float: right;
+	margin-right: 200px;
+}
+.navLi{
+	float:left;
+	position:relative;
+	padding-top: 40px;
+	width: 142px;
+	height: 75px;
+	text-align: center;
+	font-size: 20px;
+	font-family: "HutRounded-Bold","arial","微软雅黑";
+	background: url(../img/navbg.png) no-repeat top center;
+	transition: 0.3s;
+}
+
+.navLi a{
+	text-shadow: rgba(0,0,0,0.4) 2px 2px 5px;
+	color: #444647;
+	font-weight: bold;
+}
+.navLi:hover{
+	background: url(../img/navbga.png) no-repeat top center;
+}
+.navLi:hover a{
+	color: #838383;
+}
+/*隐藏部分*/
+#shadow{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 100;
+    display: none;
+}
+.shad_hid{
+	position: absolute;
+	top:1500px;
+	left: 100px;
+	transform: rotate(90deg);
+	width: 700px;
+	height: 350px;
+	background: #fff;
+	transition: 1s;
+}
+.shad{
+	position: absolute;
+	left: 50%;
+	top:150px;
+	margin-left: -350px;
+	transform: rotate(0deg);
+	width: 700px;
+	height: 350px;
+	background: #fff;
+	transition: 1s;
+}
+.shad_title{
+	position: relative;
+	width: 100%;
+	height: 84px;
+	line-height: 84px;
+}
+.shad_l{
+	position: absolute;
+	top: -10px;
+	left: 0;
+	height: 84px;
+	width: 225px;
+	background: url(../img/poptitlebg.png) no-repeat 0 0;
+	font-size: 30px;
+    text-align: center;
+    color: #fff;
+    font-family: "HutRounded-Bold","微软雅黑";
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 84px;
+}
+.shad_r{
+	position: absolute;
+	top:25px;
+	right: 20px;
+	height: 27px;
+    width: 27px;
+    background: url(../img/alertBoxClos.png);
+    cursor: pointer;
+    line-height: 84px;
+    transition: 1s;
+    transform: rotate(0deg);
+}
+.shad_r:hover{
+	transform: rotate(720deg);
+}
+.shad_p{
+	padding: 20px;
+	padding-top: 0px;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    line-height: 26px;
+    letter-spacing: 1px;
+}
+/*主体部分*/
+#content{
+	position:relative;
+	perspective:900px;
+	perspective-origin: 25% 300px;
+}
+/*左边*/
+.main{
+	transform-style:preserve-3d;
+	position:absolute;
+	left: 280px;
+	top: 130px;
+	
+}
+.mainLi{
+	transform: rotateY(30deg);
+	transition: 0.5s;
+	position:absolute;
+	left: 0;
+	top:-70px;
+}
+/*
+ 此处代码应由JS实现；
+ */
+/*.mainLi:nth-child(0){
+	transform: rotateY(30deg) translateZ(0);
+}
+.mainLi:nth-child(1){
+	transform: rotateY(30deg) translateZ(-300px);
+}
+.mainLi:nth-child(2){
+	transform: rotateY(30deg) translateZ(-600px);
+}
+.mainLi:nth-child(3){
+	transform: rotateY(30deg) translateZ(-900px);
+}
+.select{
+	transform: rotateY(0deg) translateZ(0) scale(1);
+}*/
+/*右边*/
+.introduce{
+	height: 230px;
+    width: 400px;
+    position: absolute;
+    top: 60px;
+    right: 90px;
+    color: #fff;
+    padding-left: 30px;
+    padding-top: 20px;
+    
+}
+.introduce h2{
+	height: 40px;
+    position: relative;
+    line-height: 30px;
+    font-weight: bold;
+    font-family: "微软雅黑";
+    overflow: hidden;
+}
+.introduce h2 span{
+	position: absolute;
+	top:-30px;
+	font-size: 24px;
+}
+.introduce h2 time{
+	display: none;
+}
+.introduce_datail{
+	font-weight: normal;
+    font-size: 10px;
+    line-height: 20px;
+    padding: 20px;
+    height: 160px;
+    overflow: hidden;
+    position: relative;
+}
+.introduce_datail li{
+	position: absolute;
+	top:200px;
+}
+.introduce a{
+	display: block;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0px;
+    left: 100px;
+    background: #EB2D2F url(../img/link.png) center no-repeat;
+}
+.introduce a:hover{
+	transform: scale(1.1);
+}
+/*个人资料*/
+#personal{
+	position: absolute;
+    bottom: 50px;
+    right: 30px;
+    color: #fff;
+    width: 100px;
+    height: 30px;
+    font-family: "微软雅黑";
+    font-size: 26px;
+    line-height: 30px;
+}
+#personal .title{
+	height: 30px;
+	line-height: 30px;
+}
+#personal h2{
+	font-size: 16px;
+	font-family: "微软雅黑";
+}
+#personal .icon{
+	width: 20px;
+	height: 20px;
+	padding: 5px;
+	background: url(../img/bbb.png) no-repeat center;
+	transform: rotate(180deg);
+	transition: 0.2s;
+	position: relative;
+	z-index: 10;
+}
+/*.personal_details{
+	height: 20px;
+	line-height: 20px;
+	font-size: 16px;
+}*/
+.personal_details{
+	position: absolute;
+	top: 0;
+	left: 80px;
+	width: 100px;
+}
+.personal_details li{
+	width: 100px;
+	height: 40px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	opacity: 0;
+	transition: 0.5s;
+}
+.personal_details li:hover .personal_p{
+	top: 20px;
+	opacity: 1;
+}
+.personal_span{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 20px;
+	height: 20px;
+}
+.personal_details li:nth-child(1) .personal_span{
+	background: url(../img/mail.png) no-repeat center;
+}
+.personal_details li:nth-child(2) .personal_span{
+	background: url(../img/phone.png) no-repeat center;
+}
+.personal_details li:nth-child(3) .personal_span{
+	background: url(../img/self.png) no-repeat center;
+}
+
+.personal_p{
+	height: 20px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: -100%;
+	text-align: left;
+	opacity: 0;
+	transition: 0.5s;
+	line-height: 30px;
+	font-size: 14px;
+	font-family: "微软雅黑";
+}
