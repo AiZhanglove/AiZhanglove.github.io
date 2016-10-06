@@ -1,0 +1,24 @@
+#top{
+	display: none;
+}
+#logo aside img{
+	width: 80%;
+}
+#logo aside img{
+	min-width: 300px;
+}
+#content .nav{
+	display: none;
+}
+#content .content{
+	padding: 0 10px;
+}
+#content .form select{
+	display: block;
+	margin-bottom: 9px;
+	border: 1px solid #a9aaac;
+	width: 100%;
+}
+.content1 .Corporate li img{
+	width: 85%;
+}

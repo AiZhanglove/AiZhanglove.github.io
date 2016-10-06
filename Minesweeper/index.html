@@ -1,0 +1,340 @@
+<!doctype html>
+<!-- 
+*名称：扫雷
+*作者：范顺凯
+*邮箱：269596458@qq.com
+*描述：
+    经典的扫雷游戏，设置三个难度等级
+*玩法：
+    1、左键单击：在判断出不是雷的方块上按下左键，可以打开该方块。如果方块上出现数字，则该数字表示其周围3×3区域中的地雷数（一般为8个格子，对于边块为5个格子，对于角块为3个格子。所以扫雷中最大的数字为8）；如果方块上为空（相当于0），则可以递归地打开与空相邻的方块；如果不幸触雷，则游戏结束。
+    2、右键单击：在判断为地雷的方块上按下右键，可以标记地雷（显示为小红旗）。重复一次标记怀疑对象(?)，重复两次操作来取消标雷。
+
+
+ -->
+
+<html lang="en">
+
+
+
+
+<head>
+<meta charset="UTF-8">
+<title>Minesweeper</title>
+<style>
+body{background: url(./img/bg.jpg);background-size:contain; }
+    body,ul,p{margin:0;padding:0;}
+    li{list-style-type: none;margin-top: 35px;}
+
+
+    #section{height:600px;width:760px;border:5px solid #b9bfb5;background:#bbb;margin:20px auto 0; }
+    .left{width:150px;float:left;background: #d4dee7;border:1px solid;border-color: #98979c #f4f3ef #f4f3ef #98979c;font-size: 18px;font-family: '黑体';}
+    .left{padding: 20px 0 15px 5px;}
+    #start{padding:2px 5px;background: #697a8a;border-radius: 3px;border-color: #98979c #f4f3ef #f4f3ef #98979c;border-width: 2px;color: #fff;font-family: '黑体'; font-size: 18px;}
+    .left span{display:inline-block;width:40px;border:1px solid;border-color: #98979c #f4f3ef #f4f3ef #98979c;text-align: center; padding:2px 0;}
+    .time strong{line-height: 30px;}
+    .time img{border:1px solid #ccc;padding:1px;vertical-align: middle;}
+    .next input{ background:#697a8a; border-radius: 3px;border-color: #98979c #f4f3ef #f4f3ef #98979c;color:#fff;font-weight: bold;font-family: '黑体'; }
+
+    div::selection {opacity:0;}
+    div::-moz-selection {opacity:0;}
+    div::-webkit-selection {opacity:0;}
+
+    .right{width:600px;height:600px;float:right;-border-left:1px solid #333;border:1px solid;border-color: #98979c #f4f3ef #f4f3ef #98979c;background: #d4dee7;position:relative;}
+    .right div{border:1px solid ;border-color:#f4f3ef #98979c  #98979c #f4f3ef;position:absolute;top:0;left:0;float:left;overflow: hidden;text-align: center;background: #c2c2c2;font-size: 0;cursor: default;}
+    .right .open{border-color: #9e9e9e;background: #c2ffff;font-size: 14px; }
+    .weep{background: red;}
+    .center{text-align: center;}
+    .clear{zoom:1;}
+    .clear:after{content: '';display:block;clear:both;}
+</style>
+<script src="js/tools.js"></script>
+<script>
+    var boardNum = 100;
+    var nLevel = Math.sqrt( boardNum );
+    var jsonLevel = {10:'初级',40:'中级',90:'高级'};
+    var numColor = ['#333', '#0000ff','#008000','#ff0000','#ffff00','#00ff00','#ff00ff','#990099'];
+    window.onload = function (){
+        var oMain = $('#main');
+        var oPrev = $('#prev'),
+            oNext = $('#next'),
+            oStart = $('#start');
+
+        //creat(oMain,boardNum);
+        var aDiv = $('div',oMain);
+        /////默认显示100方块////////////////////////////////////////////
+        var str = '';
+        var lineN =  Math.sqrt( boardNum );
+        var w =600/lineN;
+        //alert(lineN);
+        for(var i=0;i< boardNum ;i++){
+           str+='<div style = "width:'+(w-4)+'px;height:'+(w-4)+'px;top:'+Math.floor(i/lineN)*w +'px;left:'+ (i%lineN)*w + 'px;"></div>';
+        };
+        oMain.innerHTML = str;
+        
+        oMain.onclick=function(){
+            alert('请点击 "开始游戏" !') ;
+        }
+        oStart.onclick=function(){
+            gameOn(oMain);
+        }
+
+        oPrev.onclick = function(){
+            nLevel-=10;
+            if( nLevel<10 ){
+                nLevel=10;
+                alert('已经是初级难度了');
+            };
+            boardNum = nLevel*nLevel;
+            gameOn(oMain);
+        };
+        oNext.onclick = function(){
+            nLevel+=10;
+            if( nLevel>30 ){
+                nLevel = 30;
+                alert('已经是高级难度了');
+            };
+            boardNum = nLevel*nLevel;
+            gameOn(oMain);
+        }
+    };
+     //游戏运行////////////////////////////////////////////////////////////////////////////////
+    function gameOn(obj){
+        //游戏开始先清定时器/////////////////////////
+        clearInterval( obj.timer );
+        obj.timer = null;
+        obj.onclick = null;
+        creat(obj,boardNum);
+        var aDiv = $('div',obj);
+        var size = 600/ Math.sqrt( boardNum ) -4;
+        //alert(aDiv.length)
+        var success = 0;
+        var time = 0;
+        var oTime = $('#timePass');
+        var weepNumL = boardNum/10;
+        var oMineNumL = $('#mineNumL')
+        oTime.innerHTML = time + 's';
+        for(var i=0;i< aDiv.length ;i++){
+            aDiv.openOnoff = false;
+            aDiv[i].onclick = function(ev){
+                //console.log(this.openOnoff )
+                if( this.openOnoff ) return;
+                if(this.flag==1||this.flag==2) return;
+                ev = ev||event;
+                ev.cancelBubble = true;
+                if( this.mine === true ){
+                    for(var j=0;j< aDiv.length ;j++){
+                        if( aDiv[j].mine ===true ){
+                            aDiv[j].style.background = 'url(./img/dl.png)';
+                            aDiv[j].style.backgroundSize = size + 'px';
+                        }
+                    };
+                    setTimeout(function(){
+                        alert('游戏结束');
+                        return gameOn( obj );
+                    }, 1);     
+                }else{
+                    this.style.background = '';
+                    this.className = 'open';
+
+                    success++; 
+                    this.openOnoff = true;
+                    if( this.zero ===0 ){
+                        openZero( this.index )
+                    }
+                    //console.log(success , boardNum*0.9)
+                    if( success >= boardNum*0.9){
+                        if( window.confirm('游戏通关!\n点击“确定”继续下一关;点击“取消”重玩本关') ){
+                            nLevel+=10;
+                            if( nLevel>30 ){
+                                nLevel = 30;
+                                alert('已经是高级难度了');
+                            };
+                            boardNum = nLevel*nLevel;
+                            gameOn(obj);
+                        }else{
+                            gameOn(obj);
+                        }
+                    }
+                };
+                  //游戏用时//////////////
+                if( obj.timer ) return;
+                obj.timer = setInterval(function(){
+                    time++;
+                    oTime.innerHTML = time + 's';
+                } , 1000);
+            }
+        //右键，小旗//////////////////////////////////////
+            aDiv[i].flag = 0;
+            aDiv[i].onmousedown = function(ev){
+                ev = ev||event;
+                section.oncontextmenu = function(ev){
+                    return false;
+                };
+                if( !this.openOnoff){
+                    if( ev.button ===2 ){
+                        if(this.flag ===0){
+                            this.style.background = 'url(./img/flag.png)';
+                            this.style.backgroundSize = size + 'px';
+                            this.flag = 1;
+                            weepNumL--;
+                            oMineNumL.innerHTML = weepNumL;
+                        }else if(this.flag === 1){
+                            this.style.background = 'url(./img/flag2.png)';
+                            this.style.backgroundSize = size + 'px';
+                            this.flag = 2;
+                            weepNumL++;
+                            oMineNumL.innerHTML = weepNumL;
+                        }else{
+                            this.style.background = '#c2c2c2';
+                            //alert(1)
+                            this.flag = 0;
+                        }
+                    }
+                }
+            }
+        };
+        ///递归开0;///////////////////////
+        function openZero(i){
+            var arr = count(i,boardNum);
+            for(var j=0;j< arr.length ;j++){
+                if( aDiv[ arr[j] ].openOnoff === true ) continue;
+                if( aDiv[ arr[j] ].flag !== 0 ) continue;
+
+                aDiv[ arr[j] ].style.background = '';
+                aDiv[ arr[j] ].className = 'open';
+                success++;
+                aDiv[ arr[j] ].openOnoff = true;
+                if(aDiv[ arr[j] ].zero === 0 ){
+                    openZero( arr[j] );
+                }
+            }
+        }             
+    }
+      ///生成方块和地雷//////////////////////////////////////////////////////
+    function creat(obj,boardNum){
+        ////生成方块////////////////////////////////////////////////////
+        var str = '';
+        var lineN =  Math.sqrt( boardNum );
+        var w =600/lineN;
+        //alert(lineN);
+        for(var i=0;i< boardNum ;i++){
+           str+='<div style = "width:'+(w-4)+'px;height:'+(w-4)+'px;top:'+Math.floor(i/lineN)*w +'px;left:'+ (i%lineN)*w +'px;"></div>';
+        };
+        obj.innerHTML = str;  
+        //生成地雷//////////////////////////////////////////////////////////////////
+        var weepNum = boardNum/10;
+        var aDiv = $('div',obj);
+        var arr = [];
+        //alert(aDiv.length)
+        for(var j=0;j<aDiv.length;j++){
+            aDiv[j].index = j;
+            aDiv[j].mine = false;
+            aDiv[j].style.lineHeight = (w-2) +'px';
+            arr.push(j);
+        };
+        arr.sort(function(){
+            return Math.random() - 0.5;
+        });
+        var newArr = arr.splice(0,weepNum);
+        for(var k = 0;k<newArr.length;k++){
+            aDiv[ newArr[k] ].innerHTML = '地雷';
+            aDiv[ newArr[k] ].mine = true;
+        };
+        var oMineNum = $('#mineNum');
+        var oMineNumL = $('#mineNumL');
+        var oLevel = $('#level');
+        oMineNum.innerHTML = weepNum;
+        oMineNumL.innerHTML = weepNum;
+        oLevel.innerHTML = jsonLevel[weepNum];
+
+        //////写上雷的个数///////////////////////////////////////////////////////////////////
+        for(var m=0;m< aDiv.length ;m++){
+            var arrMin =count( m,boardNum );
+            var con =0 ;
+            aDiv[m].zero = 1;
+            if( !aDiv[m].mine){
+                for(var n=0;n<arrMin.length;n++){
+                    if( aDiv[ arrMin[n] ].mine === true ){
+                        con++;
+                    };  
+                };
+                if( con ===0 ){
+                    aDiv[m].zero = 0;
+                }else{
+                    aDiv[m].innerHTML = con;
+                    aDiv[m].style.color = numColor[con-1];
+                }
+                
+            }
+        }   
+    };
+        ///////方格算法///////////////
+    function count(a,num){
+        var lineN =  Math.sqrt( num );//一行个数，也是行数
+        var arr1 = [];
+        if(a%lineN == 0 && a!=0 &&a!=(num-lineN) ){
+            arr = [a-lineN,a+lineN,a+1,a+1-lineN,a+1+lineN] ;
+        }else if(a%lineN == (lineN-1) && a!=(lineN-1) && a!=(num-1) ){
+            arr = [a-lineN,a+lineN,a-1,a-1+lineN,a-1-lineN] ;
+        }else if(Math.floor(a/lineN)==0 && a!=0 && a!=(lineN-1)){
+            arr = [a-1,a+1,a-1+lineN,a+lineN,a+1+lineN] ;
+        }else if(Math.floor(a/lineN)==(lineN-1) && a!=(num-lineN) && a!=(num-1) ){
+            arr = [a-1,a+1,a-1-lineN,a-lineN,a+1-lineN] ;  
+        }else if( a==0){
+            arr = [1,lineN,lineN+1];
+        }else if( a==(lineN-1)){
+            arr = [lineN-2,lineN*2-2,lineN*2-1];
+        }else if( a==num-lineN ){
+            arr = [num-lineN*2,num-lineN*2+1,num-lineN+1];
+        }else if( a==(num-1)){
+            arr = [num-2,num-2-lineN,num-1-lineN];
+        }else{
+            arr = [a-1-lineN,  a-lineN , a+1-lineN,a-1,a+1,a-1+lineN, a+lineN ,a+1+lineN];
+        };
+        return arr;
+    }
+</script>
+</head>
+<body>
+    <div id="section" clear>
+        <div class="left">
+            <ul>
+                <li class='center'>
+                    <input type="button" value="开始游戏"  id="start" />
+                </li>
+                <li class="time">
+                    <img src="img/biao.png" height="30" width="30" alt="">
+                    <strong>用时：</strong>
+                    <span id='timePass'>0s</span>
+                </li>
+                <li class="next"> 
+                    <input type="button" value="上一关"  id="prev" />
+                    <input type="button" value="下一关"  id="next" />
+                </li>
+                <li>
+                    <strong>游戏难度：</strong>
+                    <span id='level'>初级</span>
+                </li>
+                
+                <li>
+                    <strong>地雷总数：</strong>
+                    <span id='mineNum'>10</span>
+                </li>
+                <li>
+                    <strong>剩余地雷：</strong>
+                    <span id='mineNumL'>10</span>
+                </li>
+                <li>
+                    <p>
+                        游戏难度：<br/>
+                        1、初级难度：100个方块，10个地雷<br/>
+                        2、中级难度：400个方块，40个地雷<br/>
+                        3、高级难度：900个方块，90个地雷<br/>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div class="right" id="main"></div>
+    </div>
+</body>
+</html>

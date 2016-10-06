@@ -1,0 +1,65 @@
+#content .download{
+	float: none;
+	width: auto;
+}
+#content .head-list{
+	width: auto;
+}
+#content .head-list li {
+   	width: auto;
+    float: none; 
+    margin-bottom: 14px;
+}
+.content1 .question {
+    width: auto;
+    float: none;
+}
+.content1 .Corporate li {
+    width: auto;
+    float: none;
+}
+.content1 .Corporate li img{
+	width: auto;
+}
+.content1 .Corporate a{
+    text-align: center
+}
+.content1 .Other li {
+    float: none;
+    width: auto;
+}
+.content1 .resources {
+    width: auto;
+    float: none;
+}
+.content1 .resources .plane img {
+	width: auto;
+}
+.all-book {
+    width: 85%;
+}
+.book-list li img{
+	width: 40%
+}
+.foot ul {
+    float: none;
+    width: auto;
+    text-align: center;
+}
+.foot .Copy {
+    float: none;
+    width: auto;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+#wrap{
+	position: relative;
+}
+#left{
+	width: 600px;
+	height: 600px;
+	background: url(../img/bg.jpg);
+	border: 5px solid black;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#left div{
+	position: absolute;
+	width: 15px;
+	height: 15px;
+}
+.apple,.snake{
+	background: url(../img/apple.png) no-repeat center;
+}
+#right{
+	width: 200px;
+	height: 600px;
+	border: 5px solid black;
+	position: absolute;
+	left: 605px;
+	top: 0;
+	text-align: center;
+}
+#right input{
+	outline: none;
+	width: 90px;
+	height: 40px;
+	background: pink;
+	vertical-align: top;
+}
+#right p{
+	font-size: 20px;
+}

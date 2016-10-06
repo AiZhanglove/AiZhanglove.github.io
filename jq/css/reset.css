@@ -1,0 +1,33 @@
+/* 样式重置 */
+body,p,ul,ol,dl,dd,h1,h2,h3,h4{
+	margin: 0;
+	font-size: 12px;
+	font-family: arial;
+}
+body{
+	overflow-x: hidden;
+}
+ul,ol,dl{
+	padding: 0;
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+img{
+	border: none;
+	vertical-align: top;
+}
+input{
+	border: none;
+	outline: none;
+}
+form{
+	margin: 0;
+}
+option{
+	padding: 0;
+}
+textarea{
+	resize: none;
+}

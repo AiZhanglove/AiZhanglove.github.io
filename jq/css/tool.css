@@ -1,0 +1,11 @@
+/* 工具   */
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.clearFIX:after{
+	content: "";
+	display: block;
+	clear: both;

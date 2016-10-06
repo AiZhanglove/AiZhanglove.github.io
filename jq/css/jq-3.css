@@ -1,0 +1,47 @@
+#top .list-right{
+	float: left;
+}
+#top .list-left{
+	display: none;
+}
+#logo h1{
+	float: none;
+	margin: auto;
+}
+#logo aside{
+	float: none;
+	margin: auto;
+}
+#content .top{
+	background: none;
+	box-shadow: none;
+}
+#content .nav{
+	float: none;
+    width: auto;
+    padding: 0;
+}
+#content .form{
+	float: none;
+    width: auto;
+}
+#content .head{
+	border-radius: 10px 10px 0 0;
+}
+.content1 .resources{
+	padding-left: 25px;
+}
+.all-book{
+	width: 95%;
+}
+.book-list{
+	padding: 0;
+}
+.book-list li {
+    width: auto;
+    float: none;
+    padding-top: 20px;
+}
+.book-list li img{
+	width: 90px;
+}

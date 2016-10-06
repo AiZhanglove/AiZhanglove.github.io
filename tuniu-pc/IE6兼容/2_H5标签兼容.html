@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/html5shiv.js"></script>
+		<script>
+			document.createElement('section');
+			document.createElement('header');
+			document.createElement('footer');
+			document.createElement('nav');
+			document.createElement('dsads');
+		</script>
+		<style>
+			body{
+				height: 3000px;
+			}
+			section{
+				width: 200px;
+				height: 200px;
+				/*display: block;*/
+				background-color: red;
+			}
+			header{
+				width: 150px;
+				height: 150px;
+				/*display: block;*/
+				background-color: blue;
+			}
+			footer{
+				width: 100px;
+				height: 100px;
+				/*display: block;*/
+				background-color: green;
+			}
+			dsads{
+				width: 100px;
+				height: 100px;
+				/*display: block;*/
+				background-color: yellow;
+			}
+			nav{
+				width: 500px;
+				height: 500px;
+				background-color: pink;
+				/*display: block;*/
+			}
+		</style>
+		<!--
+			H5标签不支持非标准浏览器
+			
+			引用html5shiv.js帮助解决
+			
+			注意用法：先引入<script src="js/html5shiv.js"></script>
+			<script>
+				document.createElement('section');
+				document.createElement('header');
+				document.createElement('footer');
+				document.createElement('nav');
+				document.createElement('dsads');
+				document.createElement('xiaotao');
+			</script>
+			使用了一个H5标签，就要写一个document.createElement('H5标签名');
+		-->
+	</head>
+	<body>
+		<header>header</header>
+		<section>section</section>
+		<footer>footer</footer>
+		<nav>nav</nav>
+		<dsads>dsads</dsads>
+	
+	</body>
+</html>

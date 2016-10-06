@@ -1,0 +1,12 @@
+/*ie清浮动*/
+.clearFIX{zoom:1;}
+#content1.left,#content1 .middle,#content1 .right,#left .second .tittle ul,#left .part1 h3,#left .part1 .tittle ul,#left .part1 .detail .left,#left .part1 .detail .right,#left .part1 .detail li,#left .part2 h3,#left .part2 .tittle ul,#left .part2 .detail .left,#left .part2 .detail .right,#left .part2 .detail li,#left .part2 .detail .type3,#left .part3 .nav li,#left .part3 .pic-big,#right,#right .ranking ul li,#content3 .service li,#left,#left .second h3,#left .second .right-list,#left .second .right-list li,#top .first,#top .second,#top .third,#head .logo h1,#head .bg-pic{
+	display: inline;
+}
+#content1 .middle-top a,#content1 .right .fourth .title,#left .first .bottom,#left .second .shadow-t,#right .tips p,#right .discuss .bg{
+	overflow: hidden;
+}
+#left .first .bg,#left .part1 .detail .bg,#left .part2 .detail .bg,#left .second .bg,#content1 .middle-top a{
+	filter:alpha(opacity=50);
+}
+#left .part1 .detail .right,#left .part2 .detail .right{zoom:1;}

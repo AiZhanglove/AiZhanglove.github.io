@@ -1,0 +1,164 @@
+#foot .box{
+	height: 197px;
+	padding-top: 20px;
+	background-color: #f5f5f5;
+	width: 1020px;
+    margin: 0 auto;
+}
+#foot .box dl{
+	border-left: 1px solid #d8d8d8;
+	float: left;
+	width:170px;
+}
+#foot .box dt{
+	padding-bottom: 11px;
+	height: 35px;
+}
+#foot .box dt i{
+	width: 35px;
+	height: 35px;
+	background: url(../../img/index/foot-box.png) no-repeat center;
+	margin-left: 20px;
+	margin-right: 10px;
+}
+#foot .box dt em{
+	font-style: normal;
+	height: 35px;
+	line-height: 35px;
+	color: #666;
+}
+#foot .box dd{
+	padding-left: 65px;
+}
+#foot .box dd p{
+	height: 18px;
+	*overflow: hidden;
+	width: 105px;
+}
+#foot .box dd a{
+	float: left;
+	height: 18px;
+	line-height: 18px;
+	color: #999;
+}
+#foot .box .box-first{
+	width:336px;
+}
+#foot .box .box-first a{
+	width: 68px;
+}
+#foot .box .box-first p{
+	width: 271px;
+}
+#foot .box .box-first{
+	border-left: none;
+}
+#foot .box .last p{
+	margin-bottom: 9px;
+}
+#foot .box2{
+	height: 62px;
+	background: url(../../img/index/foot-box2.png) no-repeat center;
+}
+#foot .foot-ad{
+	height: 60px;
+	width: 1000px;
+    margin: 10px auto;
+}
+#foot .foot-ad li{
+	width: 238px;
+	height: 58px;
+	border: 1px solid #d8d8d8;
+	float: left;
+	margin-left: 10px;
+	*display: inline;
+}
+#foot .foot-ad img{
+	width: 238px;
+	height: 58px;
+}
+#foot .box4{
+	margin-top: 10px;
+	margin-left: 180px;
+	width: 998px;
+	height: 58px;
+	border: 1px solid #d8d8d8;
+}
+#foot .box4 img{
+	width: 998px;
+	height: 58px;
+}
+#foot .box5{
+	margin-top: 10px;
+	margin-left: 180px;
+	width: 1000px;
+}
+#foot .box5 p{
+	line-height: 22px;
+	text-align: center;
+	color: #777777;
+}
+#foot .box5 a{
+	color: #777777;
+}
+#foot .box6{
+	height: 40px;
+	width: 561px;
+    margin: 9px auto 0;
+}
+#foot .box6 li{
+	border: 1px solid #d8d8d8;
+	width: 175px;
+	height: 38px;
+	margin-right: 10px;
+	float: left;
+}
+#foot .box6 li img{
+	width: 175px;
+	height: 38px;
+}
+#foot .box7{
+	width:1000px;
+	height: 34px;
+	line-height: 34px;
+	margin: 0 auto;
+}
+#foot .box8{
+	width: 1200px;
+	height: 60px;
+	background: url(../../img/index/foot-box8.png) no-repeat center;
+	margin: 0 auto;
+	border-bottom: 1px solid #e7e7e7;
+}
+#foot .box9{
+	padding-top: 11px; 
+	margin: 0 auto;
+	width: 968px;
+	line-height: 18px;
+	/*此处加line-height,使p和span的高度一致*/
+	position: relative;
+	/*heiheihei*/
+}
+#foot .box9 p{
+	color: #999;
+	width:908px;
+	/*加宽度控制*/
+}
+#foot .box9 p span{
+	margin-left: 4px;
+	height: 36px;
+}
+#foot .box9 p a{
+	float: left;
+	margin-right: 5px;
+	color:#999;
+}
+/*更多*/
+#foot .box9 p .more{
+	position:absolute;
+	bottom: 0;
+	right:6px;
+}
+#foot a:hover{
+	font-weight: bold;
+}

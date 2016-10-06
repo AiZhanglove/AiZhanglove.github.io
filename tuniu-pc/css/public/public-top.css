@@ -1,0 +1,73 @@
+#top{
+	height: 28px;
+	padding-top: 1px;
+	border-bottom: 1px solid #eee;
+	background-color: #f8f8f8;
+	font-size: 12px;
+	font-family: "微软雅黑";
+	line-height: 28px;
+	overflow-x: hidden;
+}
+#top .box{
+	width: 1172px;
+	margin: 0 auto;
+	overflow-x: hidden;
+}
+#top .first{
+	margin-right: 15px;
+}
+#top .first span{
+	float: left;
+}
+#top .first a{
+	color: #404040;
+}
+#top .first .middle{
+	margin-left: 4px;
+	margin-right: 5px;
+	font-weight: bold;
+}
+#top .second{
+	width: 105px;
+	height: 20px;
+	background: url(../../img/top/top-1.jpg) no-repeat;
+	margin-bottom: 8px;
+}
+#top .third{
+	width: 506px;
+}
+#top .third div{
+	*display: inline;
+}
+#top .third .left a{
+	margin: 0 12px;
+	color: #404040;
+}
+#top .third .left a:hover{
+	color: #ff8800;
+}
+#top .third .left .color{
+	color: #ff8800;
+}	
+#top .third .last{
+	padding-right: 10px;
+	background: url(../../img/top/top-3.jpg) no-repeat 54px 6px;
+}
+#top .third .right{
+	padding-top: 6px;
+}
+#top .third .right a{
+	float: left;
+	width: 18px;
+	height: 17px;
+}
+#top .third .last1{
+	background: url(../../img/top/top-4-1.jpg) no-repeat;
+}
+#top .third .last2{
+	background: url(../../img/top/top-4-2.jpg) no-repeat;
+	margin: 0 22px;
+}
+#top .third .last3{
+	background: url(../../img/top/top-4-3.jpg) no-repeat;
+}
