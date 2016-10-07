@@ -144,6 +144,30 @@ body{
 	position:absolute;
 	left: 0;
 	top:-70px;
+    overflow: hidden;
+
+    border-radius: 50px;
+}
+.mainLi img{
+}
+.mainLi .tips{
+    position: absolute;
+    top:14px;
+    right:-40px;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    background-color: #197eee;
+    font-weight: bold;
+    font-family: arial,'微软雅黑';
+    color: #fff;
+    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    transform: rotate(30deg);
 }
 /*
  此处代码应由JS实现；
