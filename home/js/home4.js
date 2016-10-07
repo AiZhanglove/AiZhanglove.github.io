@@ -1,23 +1,31 @@
 //右边的数据信息；
 	var data = [
 		{
-			title:'淘宝首页规划',
+			title:'画廊',
+			details:[
+				'使用当前最火的react实现',
+				'使用babel编译jsx和sass',
+				'使用node环境下的webpack打包，并实现热加载'
+			],
+			aHerf:'../react_pic_demo/build/index.html',
+			img:'img/1.png'
+		},
+		{
+			title:'途牛首页',
 			details:[
 				'使用定位、浮动、背景图片处理完成页面布局',
 				'使用源生JS完成页面中主要的JS效果',
 				'处理IE6下的兼容问题'
 			],
-			aHerf:'http://2013.miaov.com/student/mars/work/taobao/taobao.html',
+			aHerf:'../tuniu-pc/index.html',
 			img:'img/1.png'
 		},
 		{
-			title:'canvas模仿',
+			title:'途牛移动端',
 			details:[
-				'生成一定数量的数组，循环分组分配X、Y值',
-				'定时器不停重复生成文字分配给数组内每个值',
-				'同时用CANVAS写入文字，不停改变Y值，反复重新绘制'
+				'途牛H5版'
 			],
-			aHerf:'http://2013.miaov.com/student/mars/work/taobao/taobao.html',
+			aHerf:'../tuniu-mobil/index.html',
 			img:'img/2.png'
 		},
 		{
@@ -27,27 +35,25 @@
 				'用事件处理键盘方向控制，每次碰撞苹果把苹果并入蛇的数组，再在排除蛇的位置随机生成苹果,重新启动定时器，达到越来越快的效果',
 				'做出各种情况判断检测'
 			],
-			aHerf:'http://2013.miaov.com/student/mars/work/snake/snake.html',
+			aHerf:'../snake/index.html',
 			img:'img/3.png'
 		},
 		{
-			title:'手机菜单弹出效果',
+			title:'扫雷游戏',
 			details:[
-				'模拟了手机点击弹出收缩一个菜单的效果',
-				'使用了多段函数执行实现变化过程',
-				'使用CSS旋转角度完成转圈'
+				'不借用工具框架或库，全程使用原生js',
+				'游戏有三个难度',
+				'模仿经典window游戏'
 			],
-			aHerf:'http://2013.miaov.com/student/mars/work/menu/menu.html',
+			aHerf:'../Minesweeper/index.html',
 			img:'img/4.png'
 		},
 		{
-			title:'放大镜效果',
+			title:'jq官网响应式',
 			details:[
-				'模拟了手机点击弹出收缩一个菜单的效果',
-				'使用了多段函数执行实现变化过程',
-				'使用CSS旋转角度完成转圈'
+				'用媒寻还原原网站响应式效果'
 			],
-			aHerf:'javascript:;',
+			aHerf:'../jq/index.html',
 			img:'img/5.png'
 		},
 	];
